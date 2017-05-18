@@ -17,7 +17,6 @@
       fetch('config.json')
         .then(r => r.json())
         .then(config => {
-          console.log('config: ', config);
 
           /**
            * Note: for legacy reasons the controllers is looking for `pies`.
@@ -35,10 +34,7 @@
           controlPanel.addEventListener('envChanged', () => {
             player.env = window.env;
           });
-        })
-        .then(uiModel => {
-          console.log('ui-model...');
-        })
+        });
     });
   </script>
 </head>
