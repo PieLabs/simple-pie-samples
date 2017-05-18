@@ -2,6 +2,10 @@
 
 Some samples of running a pie item, One just a pie by itself and 1 using the pie-player.
 
+## dependencies 
+
+`pie@7.4.0-prerelease`
+
 ## install 
 
 ```bash
