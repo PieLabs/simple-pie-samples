@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+  <script type="text/javascript" src="pie-view.js"></script>
+  <script type="text/javascript" src="pie-controllers.js"></script>
+  <script type="text/javascript">
+    window.session = {};
+
+    document.addEventListener('DOMContentLoaded', e => {
+      fetch('config.json')
+        .then(r => r.json())
+        .then(config => {
+          const model = config.models[0];
+          return window['pie-controllers']['corespring-choice'].model(model, window.session, { mode: 'gather' })
+        })
+        .then(uiModel => {
+          const el = document.querySelector('corespring-choice');
+          el.model = uiModel;
+          el.session = window.session;
+        })
+
+    });
+  </script>
+</head>
+
+<body>
+  <p>This is an example of using a pie only on a page.</p>
+  <p>The config is hardcoded into the page, but you'd be expected to load this in somehow.</p>
+  <corespring-choice pie-id="1"></corespring-choice>
+</body>
+
+</html>

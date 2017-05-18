@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+  <script type="text/javascript" src="pie-view.js"></script>
+  <script type="text/javascript" src="pie-controllers.js"></script>
+  <script type="text/javascript" src="controller-build/bundle.js"></script>
+
+  <script type="text/javascript">
+    window.sessions = [];
+    window.env = { mode: 'gather' };
+
+    document.addEventListener('pie.player-ready', e => {
+
+      const player = document.querySelector('pie-player');
+
+      fetch('config.json')
+        .then(r => r.json())
+        .then(config => {
+          console.log('config: ', config);
+
+          /**
+           * Note: for legacy reasons the controllers is looking for `pies`.
+           * This will be changed in a new release of pie-controller. but for now we point
+           * pies -> models 
+           */
+          config.pies = config.models;
+
+          player.controller = new window.PieController(config, window['pie-controllers']);
+          player.env = window.env;
+          player.session = window.sessions;
+
+          const controlPanel = document.querySelector('pie-control-panel');
+          controlPanel.env = window.env;
+          controlPanel.addEventListener('envChanged', () => {
+            player.env = window.env;
+          });
+        })
+        .then(uiModel => {
+          console.log('ui-model...');
+        })
+    });
+  </script>
+</head>
+
+<body>
+  <p>This is an example using pie-player and a pie element within it.</p>
+  <p>The config is loaded onto the page.</p>
+  <pie-control-panel></pie-control-panel>
+  <pie-player>
+    <corespring-choice pie-id="1"></corespring-choice>
+  </pie-player>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "controller-build",
+  "description": "Just a simple build for the pie-controller attaching it to window.PieController",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+    "pie-controller": "2.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^2.5.1"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/webpack"
+  }
+}
