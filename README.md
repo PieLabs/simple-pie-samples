@@ -1,6 +1,6 @@
 # simple pie samples  
 
-Some samples of running a pie item, One just a pie by itself and 1 using the pie-player.
+Some samples of running a pie item, One just a pie by itself and one using the `pie-player`.
 
 ## dependencies 
 
